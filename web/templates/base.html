@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="SentinelOne Deep Visibility query navigator.">
+        <meta name="author" content="keyboardcrunch">
+        <title>SentinelOne Query Navigator</title>
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <!-- Favicons -->
+        <link rel="icon" href="../static/img/favicon.ico">
+        <link rel="icon" type="image/png" sizes="32x32" href="../static/img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../static/img/favicon-16x16.png">
+        
+        <!-- Custom styles for this template -->
+        <link href="../static/css/custom.css" rel="stylesheet" />
+        <script src="../static/js/feather.min.js"></script>
+    </head>
+
+
+    <body> 
+        <!-- HEADER AND CONSOLE ADDRESS FORM -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+            <a class="navbar-brand" href="../">SentinelOne Query Navigator</a>
+            <form class="form-inline" action="/setconsole" method="POST"> 
+                <input class="form-control mr-sm-2" type="text" placeholder="Console Address" name="consoleaddress" id="addy">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Set</button>
+            </form>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block sidebar">
+                    <div class="sidebar-sticky">
+
+                        <!-- MAIN NAVIGATION -->
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../dashboard">
+                                <span data-feather="monitor"></span>
+                                Dashboard <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="../tags">
+                                <span data-feather="tag"></span>
+                                Tags <span class="sr-only"></span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- TACTICS NAVIGATION -->
+                        <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Tactics</span>
+                        </h4>
+
+                        <ul class="nav flex-column mb-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../tactic/Credential Access">
+                                <span data-feather="crosshair"></span>
+                                Credential Access
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../tactic/Defense Evasion">
+                                <span data-feather="crosshair"></span>
+                                Defense Evasion
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../tactic/Execution">
+                                <span data-feather="crosshair"></span>
+                                Execution
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../tactic/Exfiltration">
+                                <span data-feather="crosshair"></span>
+                                Exfiltration
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../tactic/Impact">
+                                <span data-feather="crosshair"></span>
+                                Impact
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../tactic/Initial Access">
+                                <span data-feather="crosshair"></span>
+                                Initial Access
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../tactic/Lateral Movement">
+                                <span data-feather="crosshair"></span>
+                                Lateral Movement
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../tactic/Persistence">
+                                <span data-feather="crosshair"></span>
+                                Persistence
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../tactic/Privilege Escalation">
+                                <span data-feather="crosshair"></span>
+                                Privilege Escalation
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- MAIN CONTENT -->
+                <main role="main" role="main">
+                    {% block content %}
+                    {% endblock %}
+                </main>
+            </div>
+        </div>
+        
+        <script>
+            feather.replace();
+
+            function getCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0;i < ca.length;i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) {
+                        return c.substring(nameEQ.length,c.length);
+                    } 
+                }
+                return null;
+            }
+
+            /* SET CONSOLE ADDRESS IN FORM */
+            var consoleaddress = getCookie('console');
+            var elem = document.getElementById("addy");
+            if(typeof elem !== 'undefined' && elem !== null) {
+                elem.value = consoleaddress;
+            }
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>

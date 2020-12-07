@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="subtitle">{{tactic}}</h2>
+  <ul>
+    {% for query in queries %}
+    <li><a href="../query/{{query.id}}">{{query.title}}</a></li>
+    {% endfor %}
+  </ul>
+  
+
+{% endblock %}

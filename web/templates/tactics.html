@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Tactics
+</h1>
+<h2 class="subtitle">
+  {% for tactic in tactics %}
+  <p><a href="./tactic/{{tactic}}">{{tactic}}</a></p>
+  {% endfor %}
+</h2>
+{% endblock %}

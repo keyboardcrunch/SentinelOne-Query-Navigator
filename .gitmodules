@@ -1,0 +1,6 @@
+[submodule "queries/keyboardcrunch"]
+	path = queries/keyboardcrunch
+	url = https://github.com/keyboardcrunch/sentinelone-queries.git
+[submodule "queries"]
+	path = queries
+	url = https://github.com/keyboardcrunch/sentinelone-queries.git

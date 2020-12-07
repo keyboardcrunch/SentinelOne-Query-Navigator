@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="display:block;">
+  <h1>Tags</h1>
+  <table class="table tag-table">
+    <tbody>
+      {% for tag in tag_groups %}
+      <tr>
+        <td><a href="./tag/{{tag[0]}}">{{tag[0]}}</a></td>
+        <td><a href="./tag/{{tag[1]}}">{{tag[1]}}</a></td>
+        <td><a href="./tag/{{tag[2]}}">{{tag[2]}}</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

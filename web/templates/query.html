@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card card-query">
+  <div class="card-body">
+    <h5 class="card-title">{{query.title}}</h5>
+    <p class="card-text"><small class="text-muted">Author: {{query.author}} &nbsp; Created: {{query.date}} &nbsp; {% if query.modified %}Modified: {{query.modified}}{%endif%}</small></p>
+    <p class="card-text"><h5>Description:</h5>{{query.description}}</p>
+    <p class="card-text"><h5>Operating System: </h5>{{query.operating_system}}</p>
+    
+    <p class="card-text">
+      <h5 class="card-title">Query:</h5>
+      <code>{{query.dvquery}}</code>
+      {% if console_address %}
+      <p class="card text-center"><a class="btn btn-outline-success" href="{{console_address}}" rel="noopener noreferrer" target="_blank">Run Query</a></p>
+      {% endif %}
+    
+    </p>
+
+    {% if tactics %}
+    <p class="card-text">
+      <h5>Mitre ATT&CK: {% if query.technique %} <a href="https://attack.mitre.org/techniques/{{query.technique}}/" rel="noopener noreferrer" target="_blank">{{query.technique}}</a>{% endif %}{% if query.subtechnique %}.<a href="https://attack.mitre.org/techniques/{{query.technique}}/{{query.subtechnique}}/" rel="noopener noreferrer" target="_blank">{{query.subtechnique}}</a>{% endif %}</h5>
+      {% for tactic in tactics %}
+        <a href="../tactic/{{tactic}}">{{tactic}}</a> &nbsp;
+      {% endfor %}
+    </p>
+    {% endif %}
+
+    {% if false_positives %}
+    <h5 class="card-title">False Positives</h5>
+    <ul>
+    {% for fp in false_positives %}
+      <li>{{fp}}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if tags %}
+    <h5 class="card-title">Tags</h5>
+    <ul>
+      {% for tag in tags %}
+      <li>{{tag}}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if references %}
+    <h5 class="card-title">References</h5>
+    <ul>
+      {% for ref in references %}
+      <li><a href="{{ref}}" rel="noopener noreferrer" target="_blank">{{ref}}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}
