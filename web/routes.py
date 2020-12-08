@@ -68,6 +68,8 @@ def query(query_id):
         """
         query_params = urllib.parse.quote_plus(results.dvquery)
         console_link = "{}/dv?queryString={}".format(console_address, query_params)
+    else:
+        console_link = None
 
     false_positives = []
     if results.false_positives is not None:
