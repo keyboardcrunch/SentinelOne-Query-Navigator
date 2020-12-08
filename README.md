@@ -18,6 +18,24 @@ To run a query, first set your console address like `https://console.sentinelone
 
 ![Query View](https://github.com/keyboardcrunch/SentinelOne-Query-Navigator/blob/main/screenshots/QueryView.png?raw=True)
 
+## Getting Started
+```
+# Clone the repository
+git clone --recurse-submodules -j8 git@github.com:keyboardcrunch/SentinelOne-Query-Navigator.git
+
+# Install requirements
+pip3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+
+# Run locally
+./run.sh
+
+# Run with uwsgi
+uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi:app
+```
+
+
 ## Contributions
 Feel free to submit bug fixes, code clean-up, or additional features. For now this is just a fun personal project, but I'd like to see the community take it somewhere or help make it better. 
 
