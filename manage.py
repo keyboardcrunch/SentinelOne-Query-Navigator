@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 import os
 import argparse
+from git import Repo
 from web.models import Signatures
 from web import database, metadata
 from web.utils import load_signatures, query_folder
 
+base_dir = os.path.abspath(os.path.dirname(__file__))
+keyboardcrunch_repo = os.path.join(base_dir, "queries/keyboardcrunch/")
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description="S1QN Management Script")
@@ -21,8 +24,9 @@ if __name__ == "__main__":
     args = p.parse_args()
 
     if args.update_sigs:
-        print("Refreshing signature repository and loading new signatures only...")
-        # need to git pull
+        print("Refreshing keyboardcrunch signature repository... Only new content will be loaded.")
+        repo = Repo(keyboardcrunch_repo)
+        repo.remotes.origin.pull('main')
         load_signatures()
 
     if args.reload_database:
