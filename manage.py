@@ -29,8 +29,11 @@ if __name__ == "__main__":
         repo.remotes.origin.pull('main')
         load_signatures()
 
-    if args.reload_database:
+    elif args.reload_database:
         print("Reloading database...")
         database.session.execute(database.table("Signatures").delete())
         load_signatures()
         print("Complete!")
+
+    else:
+        p.print_help()
