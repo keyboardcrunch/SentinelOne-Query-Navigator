@@ -22,6 +22,28 @@ def get_tags():
     return sorted(tags)
 
 
+def get_tactics():
+    collection = []
+    tactics = []
+    query = database.session.query(Signatures.tactic.distinct().label("title"))
+    results = [row.title for row in query.all()]
+    for item in results:
+        if item is not None:
+            entry = item.split(',')
+            for value in entry:
+                if not value.strip() in tactics:
+                    tactics.append(value.strip())
+    for tactic in tactics:
+        res = Signatures.query.filter(Signatures.tactic.contains(tactic)).count()
+        print(res)
+        obj = {
+            "name": tactic,
+            "count": res
+        }
+        collection.append(obj)
+    return collection
+
+
 def build_dashboard():
     dashboard = ""
     return dashboard
