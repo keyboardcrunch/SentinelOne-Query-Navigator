@@ -23,10 +23,14 @@ def get_tags():
 
 
 def get_tactics():
+<<<<<<< HEAD
     """
     Load all tactics into a dictionary and return for later graphing.
     """
     collection = {}
+=======
+    collection = []
+>>>>>>> 6cf64079aaf09750488b91b2fce52a174cadb249
     tactics = []
     query = database.session.query(Signatures.tactic.distinct().label("title"))
     results = [row.title for row in query.all()]
@@ -38,11 +42,26 @@ def get_tactics():
                     tactics.append(value.strip())
     for tactic in tactics:
         res = Signatures.query.filter(Signatures.tactic.contains(tactic)).count()
+<<<<<<< HEAD
         obj = {
             tactic: res
         }
         collection.update(obj)
     return collection
+=======
+        print(res)
+        obj = {
+            "name": tactic,
+            "count": res
+        }
+        collection.append(obj)
+    return collection
+
+
+def build_dashboard():
+    dashboard = ""
+    return dashboard
+>>>>>>> 6cf64079aaf09750488b91b2fce52a174cadb249
 
 
 def load_signatures():

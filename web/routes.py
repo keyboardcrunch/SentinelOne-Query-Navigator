@@ -19,10 +19,17 @@ def dashboard():
     we need to pull stats on signature table/tactics and return to template
     """
     total = Signatures.query.count()
+<<<<<<< HEAD
     tags = len(utils.get_tags())
     tactics = utils.get_tactics()
 
     return render_template('dashboard.html', query_count=total, tag_count=tags, tactic_names=list(tactics.keys()), tactic_counts=list(tactics.values()))
+=======
+    tactics = utils.get_tactics()
+    tags = len(utils.get_tags())
+    
+    return render_template('dashboard.html', total=total, tactics=tactics, tags=tags)
+>>>>>>> 6cf64079aaf09750488b91b2fce52a174cadb249
 
 
 @app.route('/tactic/<tactic_name>')
