@@ -25,6 +25,7 @@ def get_tags():
 def get_tactics():
     """
     Load all tactics into a dictionary and return for later graphing.
+    Unused currently as tactics are hardcoded.
     """
     collection = {}
     tactics = []

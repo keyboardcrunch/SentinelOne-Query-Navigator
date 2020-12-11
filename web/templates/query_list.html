@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Tags</h1>
+
+  <h1 class="subtitle">{{title}}</h1>
 
   <ul>
-    {% for tag in tags %}
-    <li><a href="../tag/{{tag}}">{{tag}}</a></li>
+    {% for query in queries %}
+    <li><a href="../query/{{query.id}}">{{query.title}}</a></li>
     {% endfor %}
   </ul>
-
+  
   <div class="paginator">
     {% if prev_url %}
     <a href="{{ prev_url }}">Previous Page</a>
