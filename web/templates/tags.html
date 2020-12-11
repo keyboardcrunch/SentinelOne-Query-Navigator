@@ -3,18 +3,22 @@
 {% block content %}
   <h1>Tags</h1>
 
-  <ul>
-    {% for tag in tags %}
-    <li><a href="../tag/{{tag}}">{{tag}}</a></li>
-    {% endfor %}
-  </ul>
+  {% if tags %}
+    <ul>
+      {% for tag in tags %}
+      <li><a href="../tag/{{tag}}">{{tag}}</a></li>
+      {% endfor %}
+    </ul>
 
-  <div class="paginator">
-    {% if prev_url %}
-    <a href="{{ prev_url }}">Previous Page</a>
-    {% endif %}
-    {% if next_url %}
-    <a href="{{ next_url }}">Next Page</a>
-    {% endif %}
-  </div>
+    <div class="paginator">
+      {% if prev_url %}
+      <a href="{{ prev_url }}">Previous Page</a>
+      {% endif %}
+      {% if next_url %}
+      <a href="{{ next_url }}">Next Page</a>
+      {% endif %}
+    </div>
+  {% else %}
+    <p>No Tags</p>
+  {% endif %}
 {% endblock %}

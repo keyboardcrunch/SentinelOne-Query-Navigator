@@ -4,18 +4,22 @@
 
   <h1 class="subtitle">{{title}}</h1>
 
-  <ul>
-    {% for query in queries %}
-    <li><a href="../query/{{query.id}}">{{query.title}}</a></li>
-    {% endfor %}
-  </ul>
-  
-  <div class="paginator">
-    {% if prev_url %}
-    <a href="{{ prev_url }}">Previous Page</a>
-    {% endif %}
-    {% if next_url %}
-    <a href="{{ next_url }}">Next Page</a>
-    {% endif %}
-  </div>
+  {% if queries %}
+    <ul>
+      {% for query in queries %}
+      <li><a href="../query/{{query.id}}">{{query.title}}</a></li>
+      {% endfor %}
+    </ul>
+    
+    <div class="paginator">
+      {% if prev_url %}
+      <a href="{{ prev_url }}">Previous Page</a>
+      {% endif %}
+      {% if next_url %}
+      <a href="{{ next_url }}">Next Page</a>
+      {% endif %}
+    </div>
+  {% else %}
+    <p>No Results</p>
+  {% endif %}
 {% endblock %}
