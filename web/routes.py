@@ -18,7 +18,11 @@ def dashboard():
     """
     we need to pull stats on signature table/tactics and return to template
     """
-    return render_template('dashboard.html')
+    total = Signatures.query.count()
+    tags = len(utils.get_tags())
+    tactics = utils.get_tactics()
+
+    return render_template('dashboard.html', query_count=total, tag_count=tags, tactic_names=list(tactics.keys()), tactic_counts=list(tactics.values()))
 
 
 @app.route('/tactic/<tactic_name>')
@@ -57,15 +61,13 @@ def query(query_id):
     and pass it all to the template.
     """
     results = Signatures.query.get(query_id)
-    
+
     console_address = request.cookies.get('console')
     if console_address:
-        """
-        URLEncode query before creating link for queries with regex.
-
-        TODO:
-           - validate console_address as a url, maybe test the connection and throw flash() alert
-        """
+        # URLEncode query before creating link for queries with regex.
+        #
+        # TODO:
+        #   - validate console_address as a url, maybe test the connection and throw flash() alert
         query_params = urllib.parse.quote_plus(results.dvquery)
         console_link = "{}/dv?queryString={}".format(console_address, query_params)
     else:
@@ -98,8 +100,9 @@ def query(query_id):
     if results.subtechnique == "None":
         results.subtechnique = ""
 
-    return render_template('query.html', query=results, tactics=tactic_list, false_positives=false_positives,
-                           tags=tag_list, references=references, console_address=console_link)
+    return render_template('query.html', query=results, tactics=tactic_list,
+                           false_positives=false_positives, tags=tag_list,
+                           references=references, console_address=console_link)
 
 
 @app.route('/setconsole', methods=['POST'])

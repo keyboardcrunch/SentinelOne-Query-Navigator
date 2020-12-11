@@ -2,10 +2,41 @@
 
 {% block content %}
 
+
+
 <div class="content-box">
   <h1>Dashboard</h1>
   <hr/>
-  <p>A simple web based query navigator for SentinelOne Deep Visibility queries.</p>
+
+  <h4>Queries: {{query_count}} &nbsp; Tags: {{tag_count}}</h4>
+  <canvas id="tacticChart" width="600" height="400"></canvas>
+
 </div>
+
+<script>
+  // define chart
+  var chartData = {
+    labels : [{% for tactic in tactic_names %}
+              "{{tactic}}",
+              {% endfor %}],
+    datasets : [{
+      label: 'Tactics by Count',
+      data : [{% for count in tactic_counts %}
+              {{count}},
+              {% endfor %}]
+    }]
+  }
+
+
+  // get chart canvas
+  var ctx = document.getElementById("tacticChart").getContext("2d");
+
+  // create chart
+  var tacticChart = new Chart(ctx, {
+    type: 'bar',
+    data: chartData
+  });
+
+</script>
 
 {% endblock %}

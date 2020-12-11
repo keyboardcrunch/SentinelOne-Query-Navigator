@@ -22,14 +22,32 @@ def get_tags():
     return sorted(tags)
 
 
-def build_dashboard():
-    dashboard = ""
-    return dashboard
+def get_tactics():
+    """
+    Load all tactics into a dictionary and return for later graphing.
+    """
+    collection = {}
+    tactics = []
+    query = database.session.query(Signatures.tactic.distinct().label("title"))
+    results = [row.title for row in query.all()]
+    for item in results:
+        if item is not None:
+            entry = item.split(',')
+            for value in entry:
+                if not value.strip() in tactics:
+                    tactics.append(value.strip())
+    for tactic in tactics:
+        res = Signatures.query.filter(Signatures.tactic.contains(tactic)).count()
+        obj = {
+            tactic: res
+        }
+        collection.update(obj)
+    return collection
 
 
 def load_signatures():
     """
-    Load signatures from query folder. Won't refresh data, only loads new 
+    Load signatures from query folder. Won't refresh data, only loads new
     content where there isn't a title conflict.
     """
     for sig_file in Path(query_folder).rglob('*.yml'):
