@@ -40,6 +40,7 @@ uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi:app
 Feel free to submit bug fixes, code clean-up, or additional features. For now this is just a fun personal project, but I'd like to see the community take it somewhere or help make it better. 
 
 ## TODO
-- Add pagination to the /tactic/ view
-- Add a view for queries without Mitre information
+- Fix the template DOM sizing and layout
+- ~~Add pagination to the /tactic/ view~~
+- ~~Add a view for queries without Mitre information~~
 - ~~Finish the index and dashboard pages~~
