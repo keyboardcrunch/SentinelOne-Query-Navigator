@@ -42,4 +42,4 @@ Feel free to submit bug fixes, code clean-up, or additional features. For now th
 ## TODO
 - Add pagination to the /tactic/ view
 - Add a view for queries without Mitre information
-- Finish the index and dashboard pages
+- ~~Finish the index and dashboard pages~~
