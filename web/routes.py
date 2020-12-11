@@ -4,7 +4,7 @@ from web import app, database
 from web.models import Signatures
 import web.utils as utils
 
-pagination_count = 25
+pagination_count = 20
 
 @app.route('/')
 def index():
