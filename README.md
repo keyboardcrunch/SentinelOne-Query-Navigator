@@ -14,6 +14,8 @@ A `manage.py` has been included for updating the keyboardcrunch query repository
 To run a query, first set your console address like `https://console.sentinelone.com` in the navigator. Then you will see the Query button on the query page, clicking it will automatically open a new browser tab passing the query to your SentinelOne console.
 
 ## Screenshots
+![Main View](https://github.com/keyboardcrunch/SentinelOne-Query-Navigator/blob/main/screenshots/Main.png?raw=True)
+
 ![Tactic View](https://github.com/keyboardcrunch/SentinelOne-Query-Navigator/blob/main/screenshots/TacticView.png?raw=True)
 
 ![Query View](https://github.com/keyboardcrunch/SentinelOne-Query-Navigator/blob/main/screenshots/QueryView.png?raw=True)
