@@ -1,67 +1,43 @@
-/* General */
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
 
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
-}
-
-.feather {
-    width: 16px;
-    height: 16px;
-    vertical-align: text-bottom;
-}
-
-.content-box {
-    width: 800px;
-    height: 800px;
-}
-
-/* wide input for console address */
-.form-inline .form-control {
-    width: 300px;
-}
-
-/* Tag cloud */
-
-.chip.chip-md {
-    height: 42px;
-    line-height: 42px;
-    border-radius: 21px;
-    }
-
-    .chip.chip-md .close {
-        height: 42px;
-        line-height: 42px;
-        border-radius: 21px;
-        }
-
-.center {
-    text-align:center;
-}
-
-/* CARD QUERY */
-.card-query {
-    width: 700px;
-    border: none;
-}
-
-.card-button {
-    top: 15px;
-}
-
-code {
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+  }
+  
+  
+  /* Custom page CSS
+  -------------------------------------------------- */
+  
+  body > .container {
+    padding: 10px 15px 0;
+  }
+  
+  .footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  code {
     font-family: monospace;
     line-height: 1.6;
     margin-bottom: 1.6em;
     padding: .5em .5em;
     display: block;
-}
+  }
+  
+  .form-inline .form-control {
+    width: 300px;
+  }

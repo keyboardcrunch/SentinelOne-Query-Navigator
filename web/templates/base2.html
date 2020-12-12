@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="SentinelOne Deep Visibility query navigator.">
+    <meta name="author" content="keyboardcrunch">
+    <title>SentinelOne Query Navigator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="icon" href="../static/img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/img/favicon-16x16.png">
+    
+    <!-- Custom styles and javascript -->
+    <link href="../static/css/custom.css" rel="stylesheet" />
+    <script type="text/javascript" src="../static/js/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/js/chartjs-plugin-colorschemes.js"></script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <a class="navbar-brand" href="../">SentinelOne Query Navigator</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../tags">Tags</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Queries
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="../all">All Queries</a>
+                  <a class="dropdown-item" href="../generics">Generic Queries</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Tactics
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="../tactic/Credential Access">Credential Access</a>
+                  <a class="dropdown-item" href="../tactic/Defense Evasion">Defense Evasion</a>
+                  <a class="dropdown-item" href="../tactic/Execution">Execution</a>
+                  <a class="dropdown-item" href="../tactic/Exfiltration">Exfiltration</a>
+                  <a class="dropdown-item" href="../tactic/Impact">Impact</a>
+                  <a class="dropdown-item" href="../tactic/Initial Access">Initial Access</a>
+                  <a class="dropdown-item" href="../tactic/Lateral Movement">Lateral Movement</a>
+                  <a class="dropdown-item" href="../tactic/Persistence">Persistence</a>
+                  <a class="dropdown-item" href="../tactic/Privilege Escalation">Privilege Escalation</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline" action="/setconsole" method="POST"> 
+          <input class="form-control mr-sm-2" type="text" placeholder="Console Address" name="consoleaddress" id="addy">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Set</button>
+        </form>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="jumbotron">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </main>
+
+    <script>
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) {
+                    return c.substring(nameEQ.length,c.length);
+                } 
+            }
+            return null;
+        }
+
+        /* SET CONSOLE ADDRESS IN FORM */
+        var consoleaddress = getCookie('console');
+        var elem = document.getElementById("addy");
+        if(typeof elem !== 'undefined' && elem !== null) {
+            elem.value = consoleaddress;
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../static/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../static/js/vendor/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+  </body>
+</html>

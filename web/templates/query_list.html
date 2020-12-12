@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 
 {% block content %}
 
@@ -14,6 +14,7 @@
     <div class="paginator">
       {% if prev_url %}
       <a href="{{ prev_url }}">Previous Page</a>
+      &nbsp; | &nbsp;
       {% endif %}
       {% if next_url %}
       <a href="{{ next_url }}">Next Page</a>
