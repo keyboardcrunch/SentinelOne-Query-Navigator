@@ -41,3 +41,7 @@ html {
   .form-inline .form-control {
     width: 300px;
   }
+
+  .jumbotron {
+      padding: 0rem 0rem;
+  }
