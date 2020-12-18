@@ -46,3 +46,7 @@ Feel free to submit bug fixes, code clean-up, or additional features. For now th
 - ~~Add pagination to the /tactic/ view~~
 - ~~Add a view for queries without Mitre information~~
 - ~~Finish the index and dashboard pages~~
+- App settings for auto-run of query and default timeframe
+- Ability to refresh data without bumping row ID
+- Views for technique
+- Map Tactic to Mitre Tactic ID (maybe)
